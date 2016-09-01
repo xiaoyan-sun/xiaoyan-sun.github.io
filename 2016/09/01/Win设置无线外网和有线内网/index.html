@@ -15,15 +15,20 @@
 	})();
 	</script>
   
-  <title>Welcome!! | 小延</title>
+  <title>Win设置无线外网和有线内网 | 小延</title>
   <meta name="author" content="Xiaoyan">
   
-  <meta name="description" content="welcome to my blog!">
+  <meta name="description" content="设置方法主要分为三步
+一是使用route命令设置路由，将访问内外网的路由分别设置为对应网关
+二是设置正确的dns服务器地址，保证内外网域名解析正确
+三是如果依然有内网服务无法解析域名，可以手动将其添加到hosts文件
+
+示例代码如下：">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Welcome!!"/>
+  <meta property="og:title" content="Win设置无线外网和有线内网"/>
   <meta property="og:site_name" content="小延"/>
 
   
@@ -64,26 +69,44 @@
 </div>
 </header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper"><article class="page">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
   
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	Welcome!!
+	Win设置无线外网和有线内网
   </h1>
   <p class="article-author">By
     
       <a href="http://www.vbaitai.com" title="Xiaoyan">Xiaoyan</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-18T02:47:34.000Z" itemprop="datePublished">2015-11-18</time>
-    更新日期:<time datetime="2015-11-18T02:57:10.481Z" itemprop="dateModified">2015-11-18</time>
+    <time datetime="2016-09-01T12:50:30.000Z" itemprop="datePublished">2016-09-01</time>
+    更新日期:<time datetime="2016-09-01T12:59:22.862Z" itemprop="dateModified">2016-09-01</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>welcome to my blog!</p>
+        <h3 id="设置方法主要分为三步">设置方法主要分为三步</h3><ul>
+<li>一是使用route命令设置路由，将访问内外网的路由分别设置为对应网关</li>
+<li>二是设置正确的dns服务器地址，保证内外网域名解析正确</li>
+<li>三是如果依然有内网服务无法解析域名，可以手动将其添加到hosts文件</li>
+</ul>
+<h3 id="示例代码如下：">示例代码如下：</h3><a id="more"></a>
+<h4 id="route_set-bat">route_set.bat</h4><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@echo</span> off</span><br><span class="line"></span><br><span class="line">for /f <span class="string">"tokens=2"</span> %%i in (<span class="string">'netsh interface ipv4 show addresses 本地连接^|findstr 默认网关'</span>) do (set local_gw=%%i)</span><br><span class="line">for /f <span class="string">"tokens=2"</span> %%i in (<span class="string">'netsh interface ipv4 show addresses 无线网络连接^|findstr 默认网关'</span>) do (set wifi_gw=%%i)</span><br><span class="line"></span><br><span class="line">if not defined local_gw exit</span><br><span class="line">if not defined wifi_gw exit</span><br><span class="line"></span><br><span class="line">netsh interface ipv4 set dnsserver 本地连接 static <span class="number">208.67</span>.<span class="number">222.222</span></span><br><span class="line"></span><br><span class="line">route delete <span class="number">0.0</span>.<span class="number">0.0</span> mask <span class="number">0.0</span>.<span class="number">0.0</span></span><br><span class="line">route add <span class="number">0.0</span>.<span class="number">0.0</span> mask <span class="number">0.0</span>.<span class="number">0.0</span> %wifi_gw%</span><br><span class="line">route add <span class="number">10.0</span>.<span class="number">0.0</span> mask <span class="number">255.0</span>.<span class="number">0.0</span> %local_gw%</span><br><span class="line">route add <span class="number">25.0</span>.<span class="number">0.0</span> mask <span class="number">255.0</span>.<span class="number">0.0</span> %local_gw%</span><br><span class="line">route add <span class="number">55.0</span>.<span class="number">0.0</span> mask <span class="number">255.0</span>.<span class="number">0.0</span> %local_gw%</span><br><span class="line">route add <span class="number">192.168</span>.<span class="number">0.0</span> mask <span class="number">255.255</span>.<span class="number">0.0</span> %local_gw%</span><br><span class="line"></span><br><span class="line"><span class="variable">@echo</span> <span class="number">10.1</span>.<span class="number">35.144</span> mail.hfbank.com.cn &gt;&gt;<span class="attribute">C</span>:\Windows\System32\drivers\etc\hosts</span><br><span class="line"><span class="variable">@ipconfig</span> /flushdns</span><br><span class="line"><span class="variable">@pause</span> &gt; nul</span><br></pre></td></tr></table></figure>
 
     </div>
     <footer>
@@ -134,6 +157,10 @@ with(document)0[
 
  <nav id="pagination" >
     
+    <a href="/2016/09/01/puppet以及yum和gitlab命令/" class="alignleft prev" title="puppet以及yum和gitlab命令">puppet以及yum和gitlab命令</a>
+    
+    
+    <a href="/2016/08/22/git常用总结/" class="alignright next" title="git常用总结">git常用总结</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -143,7 +170,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="about/index.html" data-title="Welcome!!" data-url="http://www.vbaitai.com/about/index.html"></div>
+		<div class="ds-thread" data-thread-key="2016/09/01/Win设置无线外网和有线内网/" data-title="Win设置无线外网和有线内网" data-url="http://www.vbaitai.com/2016/09/01/Win设置无线外网和有线内网/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">

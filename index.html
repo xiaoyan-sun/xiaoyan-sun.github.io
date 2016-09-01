@@ -81,6 +81,93 @@
   
     <header>
       
+        <time datetime="2016-09-01T13:02:04.000Z"><a href="/2016/09/01/puppet以及yum和gitlab命令/">2016-09-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/09/01/puppet以及yum和gitlab命令/">puppet以及yum和gitlab命令</a></h1>
+  
+
+    </header>
+	
+    <div class="entry">
+		<h2 id="解压缩rpm包">解压缩rpm包</h2><pre><code>rpm2cpio package_name <span class="string">| cpio -div</span>
+</code></pre><h2 id="创建自己的yum源">创建自己的yum源</h2><pre><code><span class="title">createrepo</span>   <span class="comment">#在有Packages子目录的目录下执行该命令创建repo</span>
+</code></pre><h2 id="puppet相关命令">puppet相关命令</h2><h3 id="puppet启动">puppet启动</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">service puppetserver <span class="operator"><span class="keyword">start</span> | restart | <span class="keyword">stop</span>     #<span class="keyword">master</span></span><br><span class="line">sudo puppet <span class="keyword">resource</span> service puppet ensure=running <span class="keyword">enable</span>=<span class="literal">true</span>  #<span class="keyword">agent</span> </span><br><span class="line"></span><br><span class="line">#puppet <span class="keyword">agent</span>第一次启动会向<span class="keyword">master</span>发送CSR证书签名请求，<span class="keyword">master</span>对CSR的处理相关命令如下：</span><br><span class="line">sudo puppet cert <span class="keyword">list</span> [<span class="comment">--all]</span></span><br><span class="line">sudo puppet cert <span class="keyword">sign</span> &lt;<span class="keyword">NAME</span>&gt;</span></span><br></pre></td></tr></table></figure> 
+    </div>
+	
+    <footer>
+		<div class="alignleft">
+		<a href="/2016/09/01/puppet以及yum和gitlab命令/#more" class="more-link">Read more</a>
+		</div>
+        <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  
+    <header>
+      
+        <time datetime="2016-09-01T12:50:30.000Z"><a href="/2016/09/01/Win设置无线外网和有线内网/">2016-09-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2016/09/01/Win设置无线外网和有线内网/">Win设置无线外网和有线内网</a></h1>
+  
+
+    </header>
+	
+    <div class="entry">
+		<h3 id="设置方法主要分为三步">设置方法主要分为三步</h3><ul>
+<li>一是使用route命令设置路由，将访问内外网的路由分别设置为对应网关</li>
+<li>二是设置正确的dns服务器地址，保证内外网域名解析正确</li>
+<li>三是如果依然有内网服务无法解析域名，可以手动将其添加到hosts文件</li>
+</ul>
+<h3 id="示例代码如下：">示例代码如下：</h3> 
+    </div>
+	
+    <footer>
+		<div class="alignleft">
+		<a href="/2016/09/01/Win设置无线外网和有线内网/#more" class="more-link">Read more</a>
+		</div>
+        <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+  
+    <header>
+      
         <time datetime="2016-08-22T14:12:07.000Z"><a href="/2016/08/22/git常用总结/">2016-08-22</a></time>
       
       
@@ -220,7 +307,7 @@
 <div class="widget tagcloud">
   <h3 class="title">标签云</h3>
   <div class="entry">
-    <a href="/tags/git/" style="font-size: 10px;">git</a>
+    <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/puppet/" style="font-size: 10px;">puppet</a>
   </div>
 </div>
 
