@@ -15,15 +15,17 @@
 	})();
 	</script>
   
-  <title>Hello World | 小延</title>
+  <title>将时间戳转换为标准时间 | 小延</title>
   <meta name="author" content="Xiaoyan">
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+  <meta name="description" content="将时间戳转换为标准时间命令date123date -d &quot;@234898753&quot; [+ &quot;%Y%m%d %H:%M:%S&quot;]date -d &quot;1970-01-01 utc 1279592730 seconds&quot;date -d &quot;1970-01-01 utc 1279592730 seconds&quot; +&quot;%F %H:%M:%S&quot; 2010-07-20 10:25:30
+awk1echo &quot;12387334534&quot; | awk &#39;&amp;#123;print strftime (&quot;%F %T&quot;, $0)&amp;#125;&#39;
+perl使用perl方式处理1perl -e &#39;print localtime(1927375454).&quot;\n&quot;;&#39;">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="将时间戳转换为标准时间"/>
   <meta property="og:site_name" content="小延"/>
 
   
@@ -81,34 +83,41 @@
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	Hello World
+	将时间戳转换为标准时间
   </h1>
   <p class="article-author">By
     
       <a href="http://www.vbaitai.com" title="Xiaoyan">Xiaoyan</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-16T13:58:30.527Z" itemprop="datePublished">2015-11-16</time>
-    更新日期:<time datetime="2015-11-16T13:58:30.527Z" itemprop="dateModified">2015-11-16</time>
+    <time datetime="2016-10-23T13:38:49.000Z" itemprop="datePublished">2016-10-23</time>
+    更新日期:<time datetime="2016-10-23T13:40:07.076Z" itemprop="dateModified">2016-10-23</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="将时间戳转换为标准时间">将时间戳转换为标准时间</h2><h3 id="命令">命令</h3><h4 id="date">date</h4><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">date -d <span class="string">"<span class="variable">@234898753</span>"</span> [+ <span class="string">"<span class="variable">%Y</span><span class="variable">%m</span><span class="variable">%d</span> <span class="variable">%H</span>:<span class="variable">%M</span>:<span class="variable">%S</span>"</span>]</span><br><span class="line">date -d <span class="string">"1970-01-01 utc 1279592730 seconds"</span></span><br><span class="line">date -d <span class="string">"1970-01-01 utc 1279592730 seconds"</span> +<span class="string">"<span class="variable">%F</span> <span class="variable">%H</span>:<span class="variable">%M</span>:<span class="variable">%S</span>"</span> <span class="number">2010</span>-<span class="number">07</span>-<span class="number">20</span> <span class="number">10</span>:<span class="number">25</span>:<span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h4 id="awk">awk</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">echo</span> <span class="string">"12387334534"</span> | awk <span class="string">'&#123;print strftime ("%F %T", <span class="variable">$0</span>)&#125;'</span></span><br></pre></td></tr></table></figure>
+<h4 id="perl">perl</h4><p>使用perl方式处理<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">perl -<span class="keyword">e</span> '<span class="keyword">print</span> localtime(1927375454).<span class="string">"\n"</span>;'</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<blockquote>
+<p>补充:<br>UTC (Universal Time Corrdinated,UTC)世界协调时间<br>CST（China Standard Time UTC+8:00）中国北京时间<br>GMT(Grennwich Mean Time)格林威治标准时间</p>
+</blockquote>
+<h2 id="系统时区设置">系统时区设置</h2><p>[root]# vim /etc/sysconfig/clock ZONE=”Asia/Shanghai”<br>[root@365linux ~]# cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime</p>
+<p>oracle 中将unix/linux时间戳进行转换<br>unix/linux时间戳是按照从格林威治时间1970年1月1日期计算的一个秒数。</p>
+<p>unix/linux时间戳转换为标准时间格式（主要是注意时区问题）：<br>select TO_DATE(‘19700101’,’yyyymmdd’) + 1235728935/86400 +TO_NUMBER(SUBSTR(TZ_OFFSET(sessiontimezone),1,3))/24 from dual 其中1235728935就是unix/linux时间戳，转换完之后就表示为 2009-2-27 18:02:15。</p>
+<p>反过来也一样，还是要考虑时区:<br>select (to_date(‘2009-2-27 18:02:15’,’yyyy-mm-dd hh24:mi:ss’) - to_date(‘1970-1-1’,’yyyy-mm-dd’))<em>86400- TO_NUMBER(SUBSTR(TZ_OFFSET(sessiontimezone),1,3))</em>3600 from dual</p>
 
     </div>
     <footer>
         
         
+  
+  <div class="tags">
+    <a href="/tags/linux/">linux</a>
+  </div>
+
 		<div class="bdsharebuttonbox">
 	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
 	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
@@ -154,8 +163,8 @@ with(document)0[
 
  <nav id="pagination" >
     
-    <a href="/2015/11/17/my-first-article/" class="alignleft prev" title="my_first_article">my_first_article</a>
     
+    <a href="/2016/10/23/gitlab的仓库备份同步-md/" class="alignright next" title="gitlab的仓库备份同步.md">gitlab的仓库备份同步.md</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -165,7 +174,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2015/11/16/hello-world/" data-title="Hello World" data-url="http://www.vbaitai.com/2015/11/16/hello-world/"></div>
+		<div class="ds-thread" data-thread-key="2016/10/23/将时间戳转换为标准时间/" data-title="将时间戳转换为标准时间" data-url="http://www.vbaitai.com/2016/10/23/将时间戳转换为标准时间/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">

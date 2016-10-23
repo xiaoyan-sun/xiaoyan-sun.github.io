@@ -15,15 +15,17 @@
 	})();
 	</script>
   
-  <title>Hello World | 小延</title>
+  <title>gitlab的仓库备份同步.md | 小延</title>
   <meta name="author" content="Xiaoyan">
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+  <meta name="description" content="需求背景在公网上搭建一个gitlab服务器，所有项目代码的更新、提交都在这个服务器中进行，实现对代码的版本控制。同时在本地的局域网内再搭建一个gitlab服务器，把项目中每天的代码变化同步到这个服务器的项目中，备份。
+方法方法一最基本方法，使用git的pull、push等命令编写shell脚本，大概思路如下：1234567891011git clone [src_url.git]cd $proj_dirgit remote add hf-origin [dst_url.git]git checkout master git pull git push hf-origin master:mastergit checkout developgit pull git push hf-origin develop:develop
+方法二">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="gitlab的仓库备份同步.md"/>
   <meta property="og:site_name" content="小延"/>
 
   
@@ -81,34 +83,37 @@
   <div class="post-content">
     <header class="article-info clearfix">
   <h1 itemprop="name">
-	Hello World
+	gitlab的仓库备份同步.md
   </h1>
   <p class="article-author">By
     
       <a href="http://www.vbaitai.com" title="Xiaoyan">Xiaoyan</a>
     </p>
   <p class="article-time">
-    <time datetime="2015-11-16T13:58:30.527Z" itemprop="datePublished">2015-11-16</time>
-    更新日期:<time datetime="2015-11-16T13:58:30.527Z" itemprop="dateModified">2015-11-16</time>
+    <time datetime="2016-10-23T13:32:54.000Z" itemprop="datePublished">2016-10-23</time>
+    更新日期:<time datetime="2016-10-23T13:40:31.394Z" itemprop="dateModified">2016-10-23</time>
     
   </p>
 </header>
     <div class="entry">
 		
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="需求背景">需求背景</h2><p>在公网上搭建一个gitlab服务器，所有项目代码的更新、提交都在这个服务器中进行，实现对代码的版本控制。同时在本地的局域网内再搭建一个gitlab服务器，把项目中每天的代码变化同步到这个服务器的项目中，备份。</p>
+<h2 id="方法">方法</h2><h3 id="方法一">方法一</h3><p>最基本方法，使用git的pull、push等命令编写shell脚本，大概思路如下：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">[src_url</span>.git]</span><br><span class="line">cd $proj_dir</span><br><span class="line">git remote add hf-origin [dst_url.git]</span><br><span class="line"></span><br><span class="line">git checkout <span class="keyword">master</span> </span><br><span class="line"><span class="title">git</span> pull </span><br><span class="line">git push hf-origin <span class="literal">master</span>:<span class="keyword">master</span></span><br><span class="line"></span><br><span class="line"><span class="title">git</span> checkout develop</span><br><span class="line">git pull </span><br><span class="line">git push hf-origin develop:develop</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法二">方法二</h3><a id="more"></a>
+<p>使用git的–mirror选项，使用仓库镜像的方式同步，大概思路如下：<br><figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone --mirror [src_url.git]</span><br><span class="line">cd <span class="variable">$proj</span>_dir</span><br><span class="line">git remote <span class="keyword">update</span> </span><br><span class="line">git push --mirror [dst_url.git]</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法三">方法三</h3><p>使用inotify和rsync进行实时同步<br>详细方法请参考如下外部链接：<br><a href="http://blog.csdn.net/syloke/article/details/48050559" target="_blank" rel="external">gitlab主备实时同步</a><br>其中关键脚本如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/bin/bash </span></span><br><span class="line"><span class="built_in">set</span> -x </span><br><span class="line">/data/tools/inotify/bin/inotifywait -mrq --timefmt <span class="string">'%d/%m/%y %H:%M'</span> --format <span class="string">'%T %w%f%e'</span> <span class="operator">-e</span> modify,delete,create,move,attrib /home/git/repositories | <span class="keyword">while</span> <span class="built_in">read</span> files</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   rsync  -rlptgoD --password-file=/etc/git_rsync /home/git/repositories  git@<span class="number">10.10</span>.<span class="number">10.16</span>::repositories</span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="方法四">方法四</h3><p>使用gitolilte的mirror功能实现gitlab的互备方案<br>具体方法参考如下链接：<br><a href="http://www.cnblogs.com/lenolix/archive/2013/03/11/2953573.html" target="_blank" rel="external">gitlab搭建之互备模式</a></p>
+<h3 id="方法五（？）">方法五（？）</h3><p>使用git的hooks功能，可能能实现更新后的自动备份？</p>
 
     </div>
     <footer>
         
         
+  
+  <div class="tags">
+    <a href="/tags/gitlab/">gitlab</a>
+  </div>
+
 		<div class="bdsharebuttonbox">
 	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
 	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
@@ -154,8 +159,10 @@ with(document)0[
 
  <nav id="pagination" >
     
-    <a href="/2015/11/17/my-first-article/" class="alignleft prev" title="my_first_article">my_first_article</a>
+    <a href="/2016/10/23/将时间戳转换为标准时间/" class="alignleft prev" title="将时间戳转换为标准时间">将时间戳转换为标准时间</a>
     
+    
+    <a href="/2016/09/01/puppet以及yum和gitlab命令/" class="alignright next" title="puppet以及yum和gitlab命令">puppet以及yum和gitlab命令</a>
     
     <div class="clearfix"></div>
 </nav>
@@ -165,7 +172,7 @@ with(document)0[
 	
 	<section id="comment">
 		<!-- 多说评论框 start -->
-		<div class="ds-thread" data-thread-key="2015/11/16/hello-world/" data-title="Hello World" data-url="http://www.vbaitai.com/2015/11/16/hello-world/"></div>
+		<div class="ds-thread" data-thread-key="2016/10/23/gitlab的仓库备份同步-md/" data-title="gitlab的仓库备份同步.md" data-url="http://www.vbaitai.com/2016/10/23/gitlab的仓库备份同步-md/"></div>
 		<!-- 多说评论框 end -->
 		<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 		<script type="text/javascript">
